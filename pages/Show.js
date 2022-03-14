@@ -1,7 +1,11 @@
-import { useState } from "react"
+import React from 'react';
+import { useState, useEffect } from "react";
+import { useParams } from 'react-router'
 
 function Show(props) {
-    const id = props.match.params.id
+    const { id } = useParams();
+    //const []
+    //const id = props.match.params.id
     const ads = props.ads
     const ad = ads.find(p => p._id === id)
 

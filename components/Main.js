@@ -6,7 +6,7 @@ import Show from "../pages/Show";
 function Main(props) {
     const [ads, setAds] = useState(null);
 
-    //const URL = "http://localhost:4000/people/";
+    const URL = "https://ancient-ravine-71492.herokuapp.com/";
 
     const getAds = async () => {
         const response = await fetch(URL);

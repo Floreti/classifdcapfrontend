@@ -1,5 +1,22 @@
-import { useState } from "react"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { useState } from "react";
+import './index.css';
+import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 import { Link } from "react-router-dom"
+
+ReactDOM.render(
+  <Router>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Router>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
 
 function Index(props) {
   // state to hold formData
