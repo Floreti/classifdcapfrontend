@@ -2,36 +2,68 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 
 function Ads(props) {
+    const [ads, setAds] = useState(null)
     // state to hold formData
     const [newForm, setNewForm] = useState({
-        title: '',
-        image: '',
-        content: '',
+        title: "",
+        image: "",
+        content: "",
     });
 
     // handleChange function for form
     const handleChange = (event) => {
+        console.log(event.target);
         setNewForm({ ...newForm, [event.target.name]: event.target.value });
     };
+    const URL = "http://localhost:4000/ads"
+
+    const getAds = async () => {
+        console.log("This is GetAds")
+        const response = await fetch(URL)
+        const data = await response.json()
+        console.log(data)
+        setAds(data)
+    }
+
+
+
+    fetch('http://bar.com/data.json', {
+        mode: 'no-cors' // 'cors' by default
+    }).then(function (response) {
+        // Do something with response
+    });
+
+    const createAds = async ad => {
+        // make post request to create ads
+        await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(ad),
+        })
+        // update list of ads
+        getAds()
+    }
 
     // handle submit function for form
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.createAds(newForm);
+        createAds(newForm);
         setNewForm({
-            title: '',
-            image: '',
-            content: '',
+            title: "",
+            image: "",
+            content: "",
         });
     };
 
     // loaded function
     const loaded = () => {
-        return props.ads.map((ad) => (
+        return ads.map((ad) => (
             <div key={ad._id} className="ad">
                 <Link to={`/ads/${ad._id}`}><h1>{ad.title}</h1></Link>
                 <img src={ad.image} alt={ad.title} />
-                <h3>{ad.title}</h3>
+                <h3>{ad.content}</h3>
             </div>
         ));
     };
@@ -65,9 +97,9 @@ function Ads(props) {
                 />
                 <input type="submit" value="Create Ad" />
             </form>
-            {props.ads ? loaded() : loading()}
+            {ads ? loaded() : loading()}
         </section>
     );
-}
+};
 
 export default Ads;

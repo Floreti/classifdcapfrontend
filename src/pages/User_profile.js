@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router'
 
-function Show(props) {
+function userProfile(props) {
     const { id } = useParams();
     //const []
     //const id = props.match.params.id
@@ -64,6 +64,6 @@ function Show(props) {
             </form>
         </div>
     )
-}
+};
 
-export default Show
+export default userProfile;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 
-function Ads(props) {
+function newAd(props) {
     // state to hold formData
     const [newForm, setNewForm] = useState({
         title: '',
@@ -70,4 +70,4 @@ function Ads(props) {
     );
 }
 
-export default Ads;
+export default newAd;
