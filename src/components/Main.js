@@ -17,7 +17,7 @@ import userProfile from "../pages/User_profile";
 function Main(props) {
     const [ads, setAds] = useState(null);
 
-    const URL = "http://localhost:4000/Ads";
+    const URL = "https://ancient-ravine-71492.herokuapp.com/";
 
     const getAds = async () => {
         const response = await fetch(URL);

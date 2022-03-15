@@ -15,7 +15,7 @@ function Ads(props) {
         console.log(event.target);
         setNewForm({ ...newForm, [event.target.name]: event.target.value });
     };
-    const URL = "http://localhost:4000/ads"
+    const URL = "https://ancient-ravine-71492.herokuapp.com/"
 
     const getAds = async () => {
         console.log("This is GetAds")
@@ -27,11 +27,11 @@ function Ads(props) {
 
 
 
-    fetch('http://bar.com/data.json', {
-        mode: 'no-cors' // 'cors' by default
-    }).then(function (response) {
-        // Do something with response
-    });
+    // fetch('http://bar.com/data.json', {
+    //     mode: 'no-cors' // 'cors' by default
+    // }).then(function (response) {
+    //     // Do something with response
+    // });
 
     const createAds = async ad => {
         // make post request to create ads
