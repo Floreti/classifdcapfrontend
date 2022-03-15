@@ -5,14 +5,14 @@ import { useEffect, useState } from "react"
 // IMPORT PAGES
 import Error404 from "../pages/404";
 import Ads from "../pages/Ads";
-import editAd from "../pages/Edit_ad";
-import editUser from "../pages/Edit_user";
+import EditAd from "../pages/Edit_ad";
+import EditUser from "../pages/Edit_user";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-import newAd from "../pages/New_ad";
+import NewAd from "../pages/New_ad";
 import Register from "../pages/Register";
 import Show from "../pages/Show";
-import userProfile from "../pages/User_profile";
+import UserProfile from "../pages/User_profile";
 
 function Main(props) {
     const [ads, setAds] = useState(null);

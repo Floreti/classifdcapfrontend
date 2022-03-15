@@ -21,7 +21,7 @@ function Nav(props) {
                     <div>Sign up</div>
                 </Link>
                 <Link to="new_ad">
-                    <div>Post Ad</div>
+                    <div>Post</div>
                 </Link>
             </nav>
         </header>

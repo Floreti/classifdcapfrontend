@@ -10,22 +10,22 @@ import Footer from "./components/Footer";
 // IMPORT PAGES
 import Error404 from "./pages/404";
 import Ads from "./pages/Ads";
-import editAd from "./pages/Edit_ad";
+import EditAd from "./pages/Edit_ad";
 import editUser from "./pages/Edit_user";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import newAd from "./pages/New_ad";
+import NewAd from "./pages/New_ad";
 import Register from "./pages/Register";
 import Show from "./pages/Show";
-import userProfile from "./pages/User_profile";
+import UserProfile from "./pages/User_profile";
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
-  const URL = "https://ancient-ravine-71492.herokuapp.com/"
+  const URL = "http://localhost:4000/"
   return (
     <div className="App">
       <Nav />
       <Main />
-        {/* <Switch>
+      {/* <Switch>
           <Route exact path="/"><Home /></Route>
           <Route path="/404" component={<Error404 URL={URL}/>} />
           <Route path="/ads" component={<Ads URL={URL} />} />
@@ -37,7 +37,7 @@ function App() {
           <Route path="/user/:id" component={<userProfile URL={URL} />} />
           <Route path="/user/:id/edit" component={<editUser URL={URL} />} />
         </Switch> */}
-      
+
       <Footer />
     </div>
   )

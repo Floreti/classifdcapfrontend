@@ -15,7 +15,7 @@ function Ads(props) {
         console.log(event.target);
         setNewForm({ ...newForm, [event.target.name]: event.target.value });
     };
-    const URL = "https://ancient-ravine-71492.herokuapp.com/"
+    const URL = "http://localhost:4000/Ads"
 
     const getAds = async () => {
         console.log("This is GetAds")
@@ -39,6 +39,7 @@ function Ads(props) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(ad),
         })
