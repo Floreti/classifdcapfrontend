@@ -1,10 +1,47 @@
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 
 function NewAds(props) {
-    const [ads, setAds] = useState(null)
+    const [ads, setAds] = useState([])
+
+    const getAds = async () => {
+        console.log("This is GetAds")
+        const response = await fetch(props.URL + "ads")
+        const data = await response.json()
+        console.log(data)
+        setAds(data)
+    }
+
+    const createAd = async ad => {
+        // make post request to create ads
+        await fetch(props.URL + "ads", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                // mode: "no-cors"
+                // // "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify(ad),
+        })
+        // update list of ads
+        getAds()
+
+        // state to hold formData
+        // const [newForm, setNewForm] = useState({
+        //     title: "",
+        //     content: "",
+        //     image: "",
+        // });
+
+        const URL = "https://ancient-ravine-71492.herokuapp.com/Ads"
+
+
+    }
+
+    useEffect(() => getAds(), []);
     // state to hold formData
-    const [newForm, setNewForm] = useState({
+    const [newAd, setNewAd] = useState({
         title: "",
         image: "",
         content: "",
@@ -13,48 +50,17 @@ function NewAds(props) {
     // handleChange function for form
     const handleChange = (event) => {
         console.log(event.target);
-        setNewForm({ ...newForm, [event.target.name]: event.target.value });
+        setNewAd({ ...newAd, [event.target.name]: event.target.value });
     };
-    const URL = "http://localhost:4000/Ads"
-
-    const getAds = async () => {
-        console.log("This is GetAds")
-        const response = await fetch(URL)
-        const data = await response.json()
-        console.log(data)
-        setAds(data)
-    }
-
-
-
-    // fetch('http://bar.com/data.json', {
-    //     mode: 'no-cors' // 'cors' by default
-    // }).then(function (response) {
-    //     // Do something with response
-    // });
-
-    const createAds = async ad => {
-        // make post request to create ads
-        await fetch(URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify(ad),
-        })
-        // update list of ads
-        getAds()
-    }
 
     // handle submit function for form
     const handleSubmit = (event) => {
         event.preventDefault();
-        createAds(newForm);
-        setNewForm({
+        createAd(newAd);
+        setNewAd({
             title: "",
-            image: "",
             content: "",
+            image: "",
         });
     };
 
@@ -72,28 +78,29 @@ function NewAds(props) {
     const loading = () => {
         return <h1>Loading...</h1>;
     };
+
     return (
         <section>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={newForm.title}
+                    value={setAds.title}
                     name="title"
                     placeholder="title"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.image}
-                    name="image"
-                    placeholder="image URL"
+                    value={setAds.content}
+                    name="content"
+                    placeholder="content"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.content}
-                    name="content"
-                    placeholder="content"
+                    value={setAds.image}
+                    name="image"
+                    placeholder="image URL"
                     onChange={handleChange}
                 />
                 <input type="submit" value="Create Ad" />
@@ -104,3 +111,35 @@ function NewAds(props) {
 };
 
 export default NewAds;
+
+    // const updateAds = async (ad, id) => {
+    //     // make put request to create people
+    //     await fetch(URL + id, {
+    //         method: "put",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(ad),
+    //     })
+    //     // update list of people
+    //     getAds()
+    // }
+
+    // const deleteAds = async id => {
+    //     // make delete request to create people
+    //     await fetch(URL + id, {
+    //         method: "delete",
+    //     })
+    //     // update list of people
+    //     getAds()
+    // }
+
+    // fetch('http://bar.com/data.json', {
+    //     mode: 'no-cors' // 'cors' by default
+    // }).then(function (response) {
+    //     // Do something with response
+    // });
+
+
+
+

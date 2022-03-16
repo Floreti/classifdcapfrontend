@@ -7,6 +7,7 @@ function Nav(props) {
 
     return (
         <header>
+            <div> This is a NavBar </div>
             <nav>
                 <Link to="/ads">
                     <div>Home</div>

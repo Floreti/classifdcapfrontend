@@ -1,10 +1,12 @@
-import { useState } from "react";
-
-
 function Home(props) {
-return( 
-    <h1>This is a new page</h1>
-)
+    return (
+        <>
+            <main>
+                <h2>Welcome to the Home page!</h2>
+                <p>You can do this, I believe in you.</p>
+            </main>
+        </>
+    );
 
 };
 

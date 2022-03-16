@@ -1,38 +1,61 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
-import { useParams } from 'react-router'
+// import { useParams } from 'react-router'
 
 function Register(props) {
+    const [user, setUser] = useState([]);
+
+    const getUserData = async () => {
+        const response = await fetch(props.URL + "user");
+        // console.log(response)
+        const data = await response.json();
+        // console.log(data)
+        setUser(data);
+    };
+    const createUser = async (user) => {
+        await fetch(props.URL + "user", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
+        getUserData();
+    };
+    useEffect(() => getUserData(), []);
+
+
     // state to hold formData
-    const [newForm, setNewForm] = useState({
-        title: '',
-        image: '',
-        content: '',
+    const [newUser, setNewUser] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        password: ""
     });
 
     // handleChange function for form
     const handleChange = (event) => {
-        setNewForm({ ...newForm, [event.target.name]: event.target.value });
+        setNewUser({ ...newUser, [event.target.name]: event.target.value });
     };
 
     // handle submit function for form
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.createAds(newForm);
-        setNewForm({
-            title: '',
-            image: '',
-            content: '',
+        createUser(newUser);
+        setNewUser({
+            name: "",
+            email: "",
+            phone: "",
+            password: ""
         });
     };
 
     // loaded function
     const loaded = () => {
-        return props.ads.map((ad) => (
-            <div key={ad._id} className="ad">
-                <Link to={`/ads/${ad._id}`}><h1>{ad.title}</h1></Link>
-                <img src={ad.image} alt={ad.title} />
-                <h3>{ad.title}</h3>
+        return user.map((user) => (
+            <div key={user._id} className="user">
+                <Link to={`/user/${user._id}`}><h1>{user.name}</h1></Link>
+                <h3>{user.name}</h3>
             </div>
         ));
     };
@@ -42,31 +65,38 @@ function Register(props) {
     };
     return (
         <section>
-            <form onSubmit={handleSubmit}>
+            <form class="form" onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={newForm.title}
-                    name="title"
-                    placeholder="title"
+                    value={newUser.name}
+                    name="name"
+                    placeholder="Name"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.image}
-                    name="image"
-                    placeholder="image URL"
+                    value={newUser.email}
+                    name="email"
+                    placeholder="Email"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.content}
-                    name="content"
-                    placeholder="content"
+                    value={newUser.phone}
+                    name="phone"
+                    placeholder="Phone"
                     onChange={handleChange}
                 />
-                <input type="submit" value="Create Ad" />
+                <input
+                    type="text"
+                    value={newUser.password}
+                    name="password"
+                    placeholder="password"
+                    onChange={handleChange}
+                />
+                <input type="submit" value="Create User" />
             </form>
-            {props.ads ? loaded() : loading()}
+            {user ? loaded() : loading()}
         </section>
     );
 }
