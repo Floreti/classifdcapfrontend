@@ -19,8 +19,8 @@ function NewAds(props) {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
-                // mode: "no-cors"
-                // // "Access-Control-Allow-Origin": "*",
+                mode: "no-cors"
+                // "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(ad),
         })

@@ -3,7 +3,7 @@ function Home(props) {
         <>
             <main>
                 <h2>Welcome to the Home page!</h2>
-                <p>You can do this, I believe in you.</p>
+                <p>You can do this.</p>
             </main>
         </>
     );
