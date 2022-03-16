@@ -26,7 +26,9 @@ function App() {
   const URL = "https://ancient-ravine-71492.herokuapp.com/";
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      backgroundImage: `url("https://images.pexels.com/photos/5044497/pexels-photo-5044497.jpeg")`
+    }}>
       <Nav />
       {/* <Routes> */}
       {/* <Route path="/ads" component={<Ads URL={URL} />} /> */}
