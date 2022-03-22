@@ -1,5 +1,5 @@
 import { Route } from "react-router";
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 import { Routes } from "react-router-dom";
 
 // IMPORT PAGES
@@ -15,22 +15,23 @@ import Show from "../pages/Show";
 import UserProfile from "../pages/User_profile";
 
 function Main(props) {
-    const [ads, setAds] = useState(null);
+    // const [ads setAds] = useState(null);
 
-    const URL = "https://ancient-ravine-71492.herokuapp.com/";
+    // // const URL = "https://ancient-ravine-71492.herokuapp.com/";
+    const URL = "http://localhost:4000";
 
-    const getAds = async () => {
-        const response = await fetch(URL);
-        const data = await response.json();
-        setAds(data);
-    };
+    // const getAds = async () => {
+    //     const response = await fetch(URL);
+    //     const data = await response.json();
+    //     setAds(data);
+    // };
 
-    useEffect(() => getAds(), []);
+    // useEffect(() => getAds(), []);
 
     return (
         <div>
             <h1>This is Main Body</h1>
-            <img src="https://images.pexels.com/photos/5044497/pexels-photo-5044497.jpeg" />
+            <img src="https://images.pexels.com/photos/5044497/pexels-photo-5044497.jpeg" alt="hero" />
             <Routes>
                 {/* <Route path="/ads" component={<Ads URL={URL} />} /> */}
                 {/* {/* <Route exact path="/"><Home /></Route> */}

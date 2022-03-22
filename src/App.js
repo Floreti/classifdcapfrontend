@@ -23,28 +23,14 @@ import Footer from "./components/Footer";
 
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
-  const URL = "https://ancient-ravine-71492.herokuapp.com/";
+  // const URL = "https://ancient-ravine-71492.herokuapp.com/";
+  const URL = "http://localhost:4000/";
 
   return (
     <div className="App" style={{
       backgroundImage: `url("https://images.pexels.com/photos/5044497/pexels-photo-5044497.jpeg")`
     }}>
       <Nav />
-      {/* <Routes> */}
-      {/* <Route path="/ads" component={<Ads URL={URL} />} /> */}
-      {/* {/* <Route exact path="/"><Home /></Route> */}
-
-      {/* <Route path="/" element={rp => (<Home />)} />
-        <Route path="/404" element={rp => (<Error404 URL={URL}{...rp} />)} />
-        <Route path="/ads" element={rp => (<Ads URL={URL}{...rp} />)} />
-        <Route path="/ads/:id" element={rp => (<Show URL={URL}{...rp} />)} />
-        <Route path="/new_ad" element={rp => (<NewAds URL={URL}{...rp} />)} />
-        <Route path="/ads/:id/edit" element={rp => (<EditAd URL={URL}{...rp} />)} />
-        <Route path="/register" element={rp => (<Register URL={URL}{...rp} />)} />
-        <Route path="/login" element={rp => (<Login URL={URL}{...rp} />)} />
-        <Route path="/user/:id" element={rp => (<UserProfile URL={URL}{...rp} />)} />
-        <Route path="/user/:id/edit" element={rp => (<EditUser URL={URL}{...rp} />)} />
-      </Routes> */}
       <Main />
       <Footer />
     </div>

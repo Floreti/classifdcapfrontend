@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 
 function NewAds(props) {
+    console.log(props.URL);
     const [ads, setAds] = useState([])
 
     const getAds = async () => {
-        console.log("This is GetAds")
-        const response = await fetch(props.URL + "ads")
+        console.log("This is GetAds", props.URL)
+        const response = await fetch(props.URL + "/ads")
         const data = await response.json()
         console.log(data)
         setAds(data)
@@ -15,12 +16,15 @@ function NewAds(props) {
 
     const createAd = async ad => {
         // make post request to create ads
-        await fetch(props.URL + "ads", {
+        await fetch(props.URL + "/ads", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
-                mode: "no-cors"
+                // "mode": "no-cors",
                 // "Access-Control-Allow-Origin": "*",
+                // "Access-Control-Allow-Headers": 'Origin,X-Requested-With,Content-Type,Accept Authorization',
+                // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+                // "Access-Control-Allow-Credentials": true
             },
             body: JSON.stringify(ad),
         })
@@ -34,7 +38,7 @@ function NewAds(props) {
         //     image: "",
         // });
 
-        const URL = "https://ancient-ravine-71492.herokuapp.com/Ads"
+        // const URL = "https://ancient-ravine-71492.herokuapp.com/Ads"
 
 
     }
